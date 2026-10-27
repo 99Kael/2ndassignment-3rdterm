@@ -1,6 +1,13 @@
 
 import { Link } from "react-router-dom";
-import styles from "./ProductDetail.module.css";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+} from "@mui/material";
 
 const products = [
   { id: 1, name: "Wireless Headphones", price: 299000 },
@@ -10,28 +17,53 @@ const products = [
 
 function Products() {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Our Products</h1>
+    <Box sx={{ px: 3, py: 5, maxWidth: 1200, mx: "auto" }}>
+      <Typography variant="h4" sx={{ mb: 4, textAlign: "center" }}>
+        Our Products
+      </Typography>
 
-      <div className={styles.productList}>
+      <Grid container spacing={3}>
         {products.map((product) => (
-          <div className={styles.productCard} key={product.id}>
-            <h2>{product.name}</h2>
-
-            <p className={styles.price}>
-              Rp {product.price.toLocaleString("id-ID")}
-            </p>
-
-            <Link
-              className={styles.link}
-              to={`/products/${product.id}`}
+          <Grid item xs={12} sm={6} md={4} key={product.id}>
+            <Card
+              sx={{
+                height: "100%",
+                borderRadius: 2,
+                boxShadow: 3,
+                transition: "0.2s",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: 6,
+                },
+              }}
             >
-              View Details
-            </Link>
-          </div>
+              <CardContent>
+                <Typography variant="h6" sx={{ mb: 2 }}>
+                  {product.name}
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ mb: 3 }}
+                >
+                  Rp {product.price.toLocaleString("id-ID")}
+                </Typography>
+
+                <Button
+                  component={Link}
+                  to={`/products/${product.id}`}
+                  variant="contained"
+                  fullWidth
+                >
+                  View Details
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Box>
   );
 }
 

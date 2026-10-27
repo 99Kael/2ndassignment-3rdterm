@@ -1,18 +1,30 @@
 
+import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <nav className={styles.navbar}>
-      <Link to="/" className={styles.link}>
-        Home
-      </Link>
+    <AppBar position="static" color="primary" elevation={2}>
+      <Toolbar>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1, fontWeight: 700 }}
+        >
+          Product Catalog
+        </Typography>
 
-      <Link to="/products" className={styles.link}>
-        Products
-      </Link>
-    </nav>
+        <Box>
+          <Button color="inherit" component={Link} to="/">
+            Home
+          </Button>
+
+          <Button color="inherit" component={Link} to="/products">
+            Products
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 

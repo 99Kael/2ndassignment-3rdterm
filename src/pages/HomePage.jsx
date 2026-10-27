@@ -1,16 +1,43 @@
-import styles from "./HomePage.module.css";
+
+import { Box, Button, Container, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>
-        Welcome to Product Catalog
-      </h1>
+    <Container maxWidth="md">
+      <Box
+        sx={{
+          textAlign: "center",
+          py: { xs: 8, md: 12 },
+          px: 2,
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+        >
+          Welcome to Product Catalog
+        </Typography>
 
-      <p className={styles.description}>
-        Discover our collection of products.
-      </p>
-    </div>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mb: 4 }}
+        >
+          Discover our collection of products.
+        </Typography>
+
+        <Button
+          component={Link}
+          to="/products"
+          variant="contained"
+          size="large"
+        >
+          Browse Products
+        </Button>
+      </Box>
+    </Container>
   );
 }
 
